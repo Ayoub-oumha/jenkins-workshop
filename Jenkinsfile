@@ -6,19 +6,20 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git 'https://github.com/Ayoub-oumha/jenkins-workshop.git'
+            git branch: 'main',
+                url: 'https://github.com/Ayoub-oumha/jenkins-workshop.git'
             }
         }
         
         stage('Build') {
             steps {
-                sh './mvnw clean install'
+               bat 'mvnw.cmd clean install'
             }
         }
         
         stage('Test') {
             steps {
-                sh './mvnw test'
+                bat 'mvnw.cmd test'
             }
         }
         
